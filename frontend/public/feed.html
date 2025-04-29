@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+  <title>Feed</title>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+:root {
+  --neon-blue: #00f0ff;
+  --bg-dark: #0a0a0a;
+  --text-light: #e0e0e0;
+  --bg-dark-light: #111;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Feed */
+#feed {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.car-container {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--bg-dark-light);
+  border-radius: 8px;
+  box-shadow: 0 0 15px var(--neon-blue);
+  position: relative;
+  text-align: left;
+}
+
+.car-post {
+  margin-top: 15px;
+}
+
+.car-post h3,
+.car-post h4,
+.car-post p {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.car-post h3 {
+  font-size: 24px;
+}
+
+.car-post h4 {
+  font-size: 18px;
+  color: var(--neon-blue);
+}
+
+.car-post p {
+  font-size: 16px;
+}
+
+.car-post img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.likes, .comments {
+  font-size: 14px;
+}
+
+.likes span, .comments span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+button {
+  background-color: var(--neon-blue);
+  color: #0a0a0a;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #00d4ff;
+}
+
+.delete-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+textarea {
+  width: 100%;
+  padding: 14px;
+  background-color: #111;
+  border: 2px solid #222;
+  border-radius: 5px;
+  margin-top: 8px;
+  resize: vertical;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--text-light);
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  text-align: left;
+}
+
+ul li {
+  background: #222;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+#create-post-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--neon-blue);
+  color: #0a0a0a;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 15px var(--neon-blue);
+  z-index: 10; /* Asegura que el botón esté por encima de otros elementos */
+}
+
+#create-post-btn:hover {
+  background-color: #00d4ff;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  #feed {
+    padding: 15px;
+  }
+
+  .car-container {
+    padding: 15px;
+  }
+
+  .car-post img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  button {
+    padding: 10px 18px; /* Reducido el padding */
+    font-size: 14px; /* Reducido el tamaño de la fuente */
+  }
+
+  #create-post-btn {
+    padding: 12px 22px; /* Reducido el padding */
+    font-size: 16px;
+    box-shadow: 0 0 15px var(--neon-blue);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  #feed {
+    padding: 15px;
+  }
+
+  .car-container {
+    padding: 10px;
+  }
+
+  .car-post img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button {
+    padding: 10px 20px; /* Reducido el padding */
+    font-size: 16px; /* Se mantiene el tamaño más pequeño */
+  }
+
+  #create-post-btn {
+    padding: 10px 22px;
+    font-size: 14px;
+    box-shadow: 0 0 18px var(--neon-blue);
+  }
+
+  h3, h4, p {
+    font-size: 22px;
+  }
+
+  .likes span {
+    font-size: 20px;
+  }
+
+  .comments span {
+    font-size: 20px;
+  }
+
+  textarea {
+    font-size: 20px;
+    padding: 16px;
+  }
+
+  ul li {
+    font-size: 20px;
+    padding: 14px;
+  }
+}
+
+/* Media Query para pantallas muy pequeñas (320px) */
+@media screen and (max-width: 320px) {
+  h3, h4, p {
+    font-size: 18px; /* Ajuste más pequeño para pantallas pequeñas */
+  }
+
+  button {
+    padding: 10px 18px; /* Reducido el padding */
+    font-size: 16px; /* Tamaño más pequeño para los botones */
+  }
+
+  #create-post-btn {
+    padding: 10px 22px;
+    font-size: 14px;
+    box-shadow: 0 0 18px var(--neon-blue);
+  }
+
+  .likes span {
+    font-size: 18px;
+  }
+
+  .comments span {
+    font-size: 18px;
+  }
+
+  textarea {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  ul li {
+    font-size: 18px;
+    padding: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contenedor del mensaje */
+#messageContainer {
+  display: none; /* Asegura que esté oculto inicialmente */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #111;
+  padding: 25px 30px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  box-shadow: 0 0 25px var(--neon-blue);
+  max-width: 400px;
+  z-index: 9999;
+}
+
+/* Clases para el mensaje de éxito y error */
+#messageContainer .success {
+  color: var(--neon-blue);
+}
+
+#messageContainer .error {
+  color: var(--error-red);
+}
+
+/* Botón de OK centrado */
+#okButton {
+  margin-top: 20px;
+  background-color: var(--neon-blue);
+  color: #0a0a0a;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--neon-blue);
+  transition: all 0.3s ease;
+
+  /* Centrar el botón */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#okButton:hover {
+  background-color: #00e6ff;
+}
+  </style>
+  
+</head>
+<body>
+
+
+  <!-- Contenedor para el mensaje personalizado -->
+<div id="messageContainer" class="success">
+  <p id="messageText"></p>
+  <button id="okButton">OK</button>
+</div>
+
+
+  <a href="upload.html" id="create-post-btn">Crear publicación</a>
+  <br><br>
+  <div id="feed"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', cargarAutos);
+
+
+    async function cargarAutos() {
+  try {
+    // Llamada para obtener los autos desde el backend
+    const response = await fetch('/api/cars');
+    if (!response.ok) {
+      throw new Error('Error al obtener los autos');
+    }
+    const cars = await response.json();
+    const feedContainer = document.getElementById('feed');
+    feedContainer.innerHTML = ''; // Limpiar el feed actual
+
+    const token = localStorage.getItem('token');
+    const userId = token ? jwt_decode(token).userId : null;
+
+    // Crear el HTML para cada auto
+    for (const car of cars) {
+      
+
+      const hasLiked = car.likes.some(like => like._id.toString() === userId.toString());
+      
+
+      const carContainer = document.createElement('div');
+      carContainer.classList.add('car-container');
+      carContainer.dataset.id = car._id; // Asegurarnos de que cada auto tenga un ID único para el DOM
+      const isOwner = car.user._id === userId;
+
+      carContainer.innerHTML = `
+        <div class="car-post">
+          <h3>${car.user.username}</h3>
+          <h4>${car.title}</h4>
+          <p>${car.description}</p>
+          <img src="${car.imageUrl}" alt="Foto del auto" />
+          <div class="likes">
+            <span>${car.likes.length} likes</span>
+            ${hasLiked
+              ? `<button class="unlike-btn" data-id="${car._id}">Quitar Like</button>`
+              : `<button class="like-btn" data-id="${car._id}">Dar Like</button>`
+            }
+          </div>
+          <br><br>
+          <div class="comments">
+            <h5>Comentarios:</h5>
+            <ul>
+              ${car.comments.map(comment => ` 
+                <li>
+                  <strong>${comment.user.username}:</strong> ${comment.text}
+                  ${comment.user._id === userId 
+                    ? `<br><br><button class="delete-comment-btn" data-car-id="${car._id}" data-comment-id="${comment._id}">Eliminar</button>` 
+                    : ''
+                  }
+                </li>`).join('')}
+            </ul>
+            <textarea id="comment-${car._id}" placeholder="Escribe un comentario..."></textarea><br><br>
+            <button class="comment-btn" data-id="${car._id}">Comentar</button>
+          </div>
+          ${isOwner ? `<button class="delete-btn" data-id="${car._id}">Eliminar Auto</button>` : ''}
+        </div>
+      `;
+      
+      feedContainer.appendChild(carContainer);
+    }
+
+    addEventListeners(); // Asegúrate de agregar los event listeners después de renderizar los autos
+
+  } catch (error) {
+    console.error('Error al cargar los autos:', error);
+  }
+}
+
+
+    function addEventListeners() {
+    document.querySelectorAll('.like-btn').forEach(button => {
+      button.addEventListener('click', toggleLike);
+    });
+
+    document.querySelectorAll('.unlike-btn').forEach(button => {
+      button.addEventListener('click', toggleLike);
+    });
+
+      document.querySelectorAll('.comment-btn').forEach(button => {
+        button.addEventListener('click', addComment);
+      });
+
+      document.querySelectorAll('.delete-comment-btn').forEach(button => {
+        button.addEventListener('click', removeComment);
+      });
+
+      document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', deleteCar);
+      });
+    }
+
+    async function toggleLike(event) {
+  const carId = event.target.dataset.id;
+  const token = localStorage.getItem('token');
+  const isUnliking = event.target.classList.contains('unlike-btn');
+  const method = isUnliking ? 'DELETE' : 'POST';
+  const url = isUnliking ? `/api/cars/${carId}/unlike` : `/api/cars/${carId}/like`;
+
+  try {
+    const response = await fetch(url, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      const data = await response.json();
+      alert(data.message || 'Error al dar/quitar like');
+      return;
+    }
+
+    // Actualizar la UI después de dar o quitar el like
+   
+    cargarAutos();  // Recarga los autos para actualizar el estado de los likes
+
+  } catch (error) {
+    console.error('Error al dar/quitar like:', error);
+  }
+}
+
+    async function addComment(event) {
+      const carId = event.target.dataset.id;
+      const commentText = document.getElementById(`comment-${carId}`).value;
+
+      if (!commentText.trim()) {
+        alert('El comentario no puede estar vacío');
+        return;
+      }
+
+      const token = localStorage.getItem('token');
+      try {
+        const response = await fetch(`/api/cars/${carId}/comment`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ text: commentText })
+        });
+
+        if (!response.ok) {
+          const data = await response.json();
+          alert(data.message || 'Error al agregar comentario');
+          return;
+        }
+
+        document.getElementById(`comment-${carId}`).value = '';
+        cargarAutos();
+      } catch (error) {
+        console.error('Error al agregar comentario:', error);
+      }
+    }
+
+    async function removeComment(event) {
+      const carId = event.target.dataset.carId;
+      const commentId = event.target.dataset.commentId;
+      const token = localStorage.getItem('token');
+
+      try {
+        const response = await fetch(`/api/cars/${carId}/comment/${commentId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) {
+          const data = await response.json();
+          alert(data.message || 'Error al eliminar comentario');
+          return;
+        }
+
+        cargarAutos();
+      } catch (error) {
+        console.error('Error al eliminar comentario:', error);
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    async function deleteCar(event) {
+  const carId = event.target.dataset.id; // ID del auto a eliminar
+  const token = localStorage.getItem('token'); // Obtener el token de autenticación
+
+  if (!token) {
+    showMessage('Por favor, inicia sesión para eliminar el auto.', 'error');
+    return;
+  }
+
+  try {
+    // Llamada al backend para eliminar el auto
+    const response = await fetch(`/api/cars/${carId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    });
+
+    // Si la respuesta del backend no es ok
+    if (!response.ok) {
+      const data = await response.json();
+      showMessage(data.message || 'Error al eliminar auto', 'error');
+      return;
+    }
+
+    const data = await response.json();
+    console.log('Auto eliminado:', data);
+
+    // Mostrar mensaje de éxito
+    showMessage('Auto eliminado exitosamente', 'success');
+
+    // Eliminar el auto del DOM de manera inmediata
+    const carContainer = document.querySelector(`.car-container[data-id="${carId}"]`);
+    if (carContainer) {
+      carContainer.remove(); // Eliminar el contenedor del auto de la página
+    }
+
+    // Recargar los autos del backend para actualizar la lista
+    cargarAutos();
+
+  } catch (error) {
+    console.error('Error al eliminar auto:', error);
+    showMessage('Hubo un problema al intentar eliminar el auto', 'error');
+  }
+}
+
+// Función para mostrar el mensaje en el contenedor
+function showMessage(message, type) {
+  const messageContainer = document.getElementById('messageContainer');
+  const messageText = document.getElementById('messageText');
+  const okButton = document.getElementById('okButton');
+
+  // Establecer el mensaje y el tipo (éxito o error)
+  messageText.textContent = message;
+  messageContainer.classList.remove('success', 'error');
+  messageContainer.classList.add(type);
+
+  // Mostrar el contenedor
+  messageContainer.style.display = 'block';
+
+  // Mostrar el botón
+  okButton.style.display = 'block'; 
+
+  // Manejar el clic en el botón OK
+  okButton.addEventListener('click', () => {
+    messageContainer.style.display = 'none';
+    okButton.style.display = 'none'; // Ocultar el botón después de hacer clic
+  });
+}
+  </script>
+</body>
+</html>

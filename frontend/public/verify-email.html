@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.ico" type="image/x-icon">
+    <title>Correo Verificado</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+:root {
+  --neon-blue: #00f0ff;
+  --bg-dark: #0a0a0a;
+  --text-light: #e0e0e0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: #111;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px var(--neon-blue);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  color: var(--neon-blue);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px var(--neon-blue);
+}
+
+p {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 30px;
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--neon-blue);
+  color: #0a0a0a;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 20px var(--neon-blue);
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #00e6ff;
+  box-shadow: 0 0 30px var(--neon-blue);
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  p,
+  .button {
+    font-size: 0.95rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Correo Verificado Exitosamente!</h1>
+        <p>Tu correo ha sido verificado correctamente. Ahora puedes iniciar sesión y disfrutar de todos los beneficios.</p>
+        <a href="/login.html" class="button">Iniciar sesión</a>
+    </div>
+</body>
+</html>
