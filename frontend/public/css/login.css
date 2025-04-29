@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+:root {
+  --neon-blue: #00f0ff;
+  --bg-dark: #0a0a0a;
+  --text-light: #e0e0e0;
+  --error-red: #ff4d4d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Título */
+h2 {
+  color: var(--neon-blue);
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px var(--neon-blue);
+  text-align: center;
+}
+
+/* Formulario */
+form {
+  background-color: #111;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px var(--neon-blue);
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #0a0a0a;
+  border: 2px solid #222;
+  border-radius: 10px;
+  color: var(--text-light);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px transparent;
+}
+
+input:focus {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue);
+}
+
+/* Botón */
+button {
+  background-color: var(--neon-blue);
+  color: #0a0a0a;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--neon-blue);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #00e6ff;
+  box-shadow: 0 0 30px var(--neon-blue);
+}
+
+/* Enlace de registro */
+.registro-link {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.registro-link a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.registro-link a:hover {
+  color: #ffffff;
+}
+
+/* Mensaje personalizado como popup */
+#messageContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #111;
+  padding: 25px 30px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  box-shadow: 0 0 25px var(--neon-blue);
+  max-width: 400px;
+  z-index: 9999;
+  display: none;
+}
+
+.success {
+  color: var(--neon-blue);
+}
+
+.error {
+  color: var(--error-red);
+}
+
+/* Botón OK dentro del mensaje */
+#okButton {
+  margin-top: 20px;
+  background-color: var(--neon-blue);
+  color: #0a0a0a;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--neon-blue);
+  transition: all 0.3s ease;
+}
+
+#okButton:hover {
+  background-color: #00e6ff;
+}
+
+
+
+
+
+
+
+/* Estilo para el contenedor de la contraseña */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Estilo para el botón de ojo */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 69%; /* Baja el ojo un poco más */
+  transform: translateY(-50%);
+  background: none; /* Elimina el fondo */
+  border: none;     /* Elimina el borde */
+  box-shadow: none;
+  cursor: pointer;
+  color: #333;
+  font-size: 18px;
+}
+
+/* Estilo para cuando el botón de ojo está en hover */
+.password-toggle:hover {
+  background: none; /* Elimina el fondo */
+  border: none;     /* Elimina el borde */
+  box-shadow: none;
+}
+
+/* Para el campo de contraseña */
+#password {
+  width: 100%;
+  padding: 12px;
+  padding-right: 40px; /* Para dejar espacio para el icono */
+  background-color: #0a0a0a;
+  border: 2px solid #222;
+  border-radius: 10px;
+  color: var(--text-light);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#password:focus {
+  border-color: none;
+  box-shadow: none;
+}
+
+/* Cambiar íconos del ojo */
+.password-toggle .fa-eye-slash {
+  color: #333; /* Mantiene el color original cuando el ojo está tachado */
+}
+
+.password-toggle .fa-eye {
+  color: #333; /* Mantiene el color original cuando el ojo está visible */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  form {
+    padding: 25px 20px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  input,
+  button {
+    font-size: 0.95rem;
+  }
+}

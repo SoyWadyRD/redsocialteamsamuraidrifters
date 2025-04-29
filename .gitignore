@@ -1,0 +1,7 @@
+# Ignorar node_modules y .env
+/backend/node_modules
+/backend/.env
+
+# Otros posibles
+.DS_Store
+*.log
